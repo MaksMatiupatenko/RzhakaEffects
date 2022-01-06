@@ -69,8 +69,10 @@ int main() {
 
 
         effect.setUniform("position", sf::Vector2f(sf::Mouse::getPosition() - window.getPosition()));
-        std::cout << (sf::Mouse::getPosition() - window.getPosition()).x << ' ' << (sf::Mouse::getPosition() - window.getPosition()).y << '\n';
         effect.setUniform("time", fullTime);
+        if (effectName == "zhmyh3.frag") {
+            effect.setUniform("power", (10.0f - fullTime) / 10.0f);
+        }
 
 
         renderTexture.draw(sf::RectangleShape(resolution), &effect);
