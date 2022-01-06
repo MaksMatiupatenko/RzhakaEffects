@@ -8,7 +8,7 @@ void main() {
 	vec2 coord = gl_FragCoord / resolution;
 	vec2 pos = position / resolution;
 
-	if(length(coord - pos) < size) coord  = pos + (coord - pos) / power;
+	if(length(gl_FragCoord - position) < size) coord = pos + (coord - pos) / power;
 
 	gl_FragColor = vec4(texture(image, coord).rgb, 1.0);
 }
