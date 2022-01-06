@@ -35,6 +35,18 @@ int main() {
         std::cin >> gamma;
         effect.setUniform("gamma", gamma);
     }
+    if (effectName == "zoom.frag") {
+        float size = 100.0f;
+        std::cout << "Enter effect size:\n";
+        std::cin >> size;
+        effect.setUniform("size", size);
+    }
+    if (effectName == "zoom.frag") {
+        float power = 2.0f;
+        std::cout << "Enter effect power:\n";
+        std::cin >> power;
+        effect.setUniform("power", power);
+    }
 
     effect.setUniform("resolution", resolution);
     effect.setUniform("image", imageTexture);
@@ -56,6 +68,8 @@ int main() {
         renderTexture.create(resolution.x, resolution.y);
 
 
+        effect.setUniform("position", sf::Vector2f(sf::Mouse::getPosition() - window.getPosition()));
+        std::cout << (sf::Mouse::getPosition() - window.getPosition()).x << ' ' << (sf::Mouse::getPosition() - window.getPosition()).y << '\n';
         effect.setUniform("time", fullTime);
 
 
